@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,18 +8,32 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+
 <body>
     <header class="header">
         <h1>TodoMVC á la Niklas</h1>
-        <input class="new-todo-input" placeholder="What needs to be done?">
-        <button type="submit" class="new-todo-button">Add</button>
+        <section>
+            <input class="new-todo-input" placeholder="What needs to be done?">
+            <button type="submit" class="new-todo-button">Add</button>
+        </section>
     </header>
     <section class="main">
-        <ul class="todo-list"></ul>
-        <!-- fill with li elements using js -->
+        <ul class="todo-list">
+            <!-- filled with li elements using js -->
+        </ul>
     </section>
     <footer class="footer">
-        <h2>Footer</h2>
+        <ul class="filters">
+            <li>n items left</li>
+            <li>All</li>
+            <li>Active</li>
+            <li>Completed</li>
+            <li>
+                <!-- den här knappen ska vara osynlig från start -->
+                <button type="submit" class="clear-all-button" hidden>Clear completed</button>
+            </li>
+        </ul>
     </footer>
 </body>
+
 </html>
