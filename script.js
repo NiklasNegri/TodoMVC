@@ -11,11 +11,16 @@ function addTodo(todoText) {
     liText.textContent = todoText;
 
     let liRemoveButton = document.createElement('button');
-    liRemoveButton,textContent = 'Remove';
+    liRemoveButton.setAttribute("type", "submit");
+    liRemoveButton.textContent = 'Remove';
+
+    let liCheckbox = document.createElement('input');
+    liCheckbox.setAttribute("type", "checkbox");
 
     let liElement = document.createElement('li');
     liElement.append(liText);
     liElement.append(liRemoveButton);
+    liElement.append(liCheckbox);
 
     todoList.append(liElement);
 
