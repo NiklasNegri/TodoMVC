@@ -20,6 +20,11 @@ li {
     justify-content: center;
 }
 
+.main li {
+    display: flex;
+    align-items: baseline;
+}
+
 .footer ul {
     display: flex;
     justify-content: center;

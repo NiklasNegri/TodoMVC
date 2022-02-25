@@ -1,18 +1,27 @@
 const todoList = document.querySelector(".todo-list");
 const newTodoInput = document.querySelector(".new-todo-input");
-const newTodoButton = document.querySelector(".new-todo-button");
+const newTodoForm = document.querySelector(".new-todo-form");
 const clearAllButton = document.querySelector(".clear-all-button");
-let liCheckbox = document.querySelector("inp
-
-while (liCheckbox.checked) {
-    clearAllButton.removeAttribute("hidden");
-}
 
 // det ska inte vara en knapp utan man ska trycka enter men funktionen är densamma
-newTodoButton.onclick = event => {
+newTodoForm.onsubmit = event => {
+    event.preventDefault();
     if (newTodoInput.value) {
         addTodo(newTodoInput.value);
     }
+    else {
+        //prompt user to enter value
+    }
+}
+
+clearAllButton.onclick = event => {
+    clearAllButton.hidden = true;
+    let removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
+    removeCheckbox.forEach(c => {
+        if (c.checked) {
+            c.parentNode.parentNode.removeChild(c.parentNode);
+        }
+    });
 }
 
 function addTodo(todoText) {
@@ -42,4 +51,14 @@ function addTodo(todoText) {
         liElement.remove();
     }
 
+    liCheckbox.onchange = event => {
+        if (liCheckbox.checked === true) {
+            // gör liText genomstruken och grå också
+            clearAllButton.hidden = false;
+        }
+        else if (liCheckbox.checked === false) {
+            // ta bort det genomstrukna och gråa
+            clearAllButton.hidden = true;
+        }
+    }
 }
