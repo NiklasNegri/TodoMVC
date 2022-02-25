@@ -2,7 +2,7 @@ const todoList = document.querySelector(".todo-list");
 const newTodoInput = document.querySelector(".new-todo-input");
 const newTodoForm = document.querySelector(".new-todo-form");
 const clearAllButton = document.querySelector(".clear-all-button");
-const removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
+const removeCheckbox = document.querySelector('input[type="checkbox"]');
 
 // det ska inte vara en knapp utan man ska trycka enter men funktionen är densamma
 newTodoForm.onsubmit = event => {
@@ -22,6 +22,21 @@ clearAllButton.onclick = event => {
             c.parentNode.parentNode.removeChild(c.parentNode);
         }
     });
+}
+
+removeCheckbox.onchange = event => {
+    let checkedBox = 0;
+    removeCheckbox.forEach(c => {
+        if (c.checked === true) {
+            checkedBox++;
+        }
+    });
+    if (checkedBox > 1) {
+        clearAllButton.hidden = false;
+    }
+    else if (checkedBox < 2) {
+        clearAllButton.hidden = true;
+    }
 }
 
 function addTodo(todoText) {
@@ -50,25 +65,4 @@ function addTodo(todoText) {
     liRemoveButton.onclick = event => {
         liElement.remove();
     }
-
-    liCheckbox.onchange = event => {
-        if (hasManyChecked > 1) {
-            // gör liText genomstruken och grå också
-            clearAllButton.hidden = false;
-        }
-        else {
-            // ta bort det genomstrukna och gråa
-            clearAllButton.hidden = true;
-        }
-    }
-}
-
-async function hasManyChecked() {
-    let checkedBox = 0;
-    liCheckbox.forEach(c => {
-        if (c.checked) {
-            checkedBox++;
-        }
-    return
-    });
 }
