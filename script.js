@@ -2,11 +2,11 @@ const todoList = document.querySelector(".todo-list");
 const newTodoInput = document.querySelector(".new-todo-input");
 const newTodoForm = document.querySelector(".new-todo-form");
 const clearAllButton = document.querySelector(".clear-all-button");
-const removeCheckbox = document.querySelector('input[type="checkbox"]');
+const removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
 
-// det ska inte vara en knapp utan man ska trycka enter men funktionen är densamma
 newTodoForm.onsubmit = event => {
     event.preventDefault();
+    clearAllButton.hidden = false;
     if (newTodoInput.value) {
         addTodo(newTodoInput.value);
     }
@@ -22,21 +22,6 @@ clearAllButton.onclick = event => {
             c.parentNode.parentNode.removeChild(c.parentNode);
         }
     });
-}
-
-removeCheckbox.onchange = event => {
-    let checkedBox = 0;
-    removeCheckbox.forEach(c => {
-        if (c.checked === true) {
-            checkedBox++;
-        }
-    });
-    if (checkedBox > 1) {
-        clearAllButton.hidden = false;
-    }
-    else if (checkedBox < 2) {
-        clearAllButton.hidden = true;
-    }
 }
 
 function addTodo(todoText) {
