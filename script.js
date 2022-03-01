@@ -15,7 +15,6 @@ newTodoForm.onsubmit = event => {
 }
 
 clearAllButton.onclick = event => {
-    event.preventDefault();
     let removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
     clearAllButton.hidden = true;
     removeCheckbox.forEach(c => {
