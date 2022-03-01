@@ -56,13 +56,13 @@ function addTodo(todoText) {
         if (liCheckbox.checked) {
             amountChecked++;
         }
-        else {
+        else if (!liCheckbox.checked) {
             amountChecked--;
         }
         if (amountChecked > 0) {
             clearAllButton.hidden = false;
         }
-        else {
+        else if (amountChecked === 0) {
             clearAllButton.hidden = true;
         }
     }
