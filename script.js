@@ -2,7 +2,6 @@ const todoList = document.querySelector(".todo-list");
 const newTodoInput = document.querySelector(".new-todo-input");
 const newTodoForm = document.querySelector(".new-todo-form");
 const clearAllButton = document.querySelector(".clear-all-button");
-const removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
 
 newTodoForm.onsubmit = event => {
     event.preventDefault();
@@ -15,6 +14,8 @@ newTodoForm.onsubmit = event => {
 }
 
 clearAllButton.onclick = event => {
+    event.preventDefault();
+    let removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
     clearAllButton.hidden = true;
     removeCheckbox.forEach(c => {
         if (c.checked) {
@@ -31,6 +32,7 @@ function addTodo(todoText) {
     */
     let liCheckbox = document.createElement('input');
     liCheckbox.type = 'checkbox';
+
     let liText = document.createElement('p');
     liText.textContent = todoText;
 
@@ -47,5 +49,14 @@ function addTodo(todoText) {
 
     liRemoveButton.onclick = event => {
         liElement.remove();
+    }
+
+    liCheckbox.onchange = event => {
+        if (liCheckbox.checked) {
+            clearAllButton.hidden = false;
+        }
+        else {
+            clearAllButton.hidden = true;
+        }
     }
 }
