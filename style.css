@@ -1,1 +1,61 @@
+header {
+    font-size: 50px;
+    font-weight: bold;
+    
+    text-align: center;
+    color: gray;
+}
+
+.add-todo-input {
+    display: block;
+    background-color: blanchedalmond;
+    width: 500px;
+    height: 50px;
+    font-size: 30px;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    position: static;
+}
+
+.todo-list {
+    list-style-type: none;
+    display: block;
+    font-size: 25px;
+    
+}
+
+.todo-list li {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    width: 540px;
+    
+    background-color: blanchedalmond;
+    
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    margin-top: -2px;
+
+
+    position: relative;
+    left: -20px;
+    top: -25px;
+    
+}
+
+.todo-list li input {
+    width: 35px;
+    height: 35px;
+    margin-top: 20px;
+}
+
+li button {
+    width: 35px;
+    height: 35px;
+    margin-top: 20px;
+}
+
+
 
