@@ -2,6 +2,7 @@ const todoList = document.querySelector(".todo-list");
 const newTodoInput = document.querySelector(".new-todo-input");
 const newTodoForm = document.querySelector(".new-todo-form");
 const clearAllButton = document.querySelector(".clear-all-button");
+let amountChecked = 0;
 
 newTodoForm.onsubmit = event => {
     event.preventDefault();
@@ -53,6 +54,12 @@ function addTodo(todoText) {
 
     liCheckbox.onchange = event => {
         if (liCheckbox.checked) {
+            amountChecked++;
+        }
+        else {
+            amountChecked--;
+        }
+        if (amountChecked > 0) {
             clearAllButton.hidden = false;
         }
         else {
