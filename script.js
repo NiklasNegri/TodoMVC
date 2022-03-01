@@ -6,7 +6,6 @@ const removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
 
 newTodoForm.onsubmit = event => {
     event.preventDefault();
-    clearAllButton.hidden = false;
     if (newTodoInput.value) {
         addTodo(newTodoInput.value);
     }
@@ -31,14 +30,13 @@ function addTodo(todoText) {
     clearCompleted knappen blir synlig och klickbar
     */
     let liCheckbox = document.createElement('input');
-    liCheckbox.setAttribute("type", "checkbox");
-
+    liCheckbox.type = 'checkbox';
     let liText = document.createElement('p');
     liText.textContent = todoText;
 
     let liRemoveButton = document.createElement('button');
-    liRemoveButton.setAttribute("type", "submit");
-    liRemoveButton.textContent = 'Remove';
+    liRemoveButton.type = 'button';
+    liRemoveButton.textContent = '❌';
 
     let liElement = document.createElement('li');
     liElement.append(liCheckbox);
