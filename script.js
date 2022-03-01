@@ -1,6 +1,7 @@
 let form = document.querySelector('.new-todo');
 let todoList = document.querySelector('.todo-list');
 let todoInput = document.querySelector('.add-todo-input');
+let arrowDownButton = document.querySelector('.arrow-button');
 
 
 
@@ -32,5 +33,13 @@ function addTodo(todoText) {
         liElement.remove();
     }
     todoInput.value = '';
+
+    liCheckbox.onchange = event => {
+        if (liCheckbox.checked) {
+            
+        }
+    }
+
+    
 }
 

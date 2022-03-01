@@ -6,17 +6,39 @@ header {
     color: gray;
 }
 
-.add-todo-input {
-    display: block;
-    background-color: blanchedalmond;
+.new-todo {
+    display: grid;
     width: 500px;
-    height: 50px;
-    font-size: 30px;
-
+    grid-template-columns: 1fr 6fr;
+    
     margin-left: auto;
     margin-right: auto;
-    padding-left: 40px;
-    position: static;
+
+    position: relative;
+    left: -3px
+}
+
+.arrow-button {
+    width: 50px;
+    height: 56px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: blanchedalmond;
+    border-right: 0px;
+    border-color: black;
+}
+
+.add-todo-input {
+    outline-width: 0px;
+    background-color: blanchedalmond;
+    width: 490px;
+    height: 50px;
+    font-size: 30px;
+    border-left: 0px;
+    border-color: black;
+    
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .todo-list {
@@ -38,11 +60,8 @@ header {
     border: 2px solid black;
     margin-top: -2px;
 
-
     position: relative;
-    left: -20px;
     top: -25px;
-    
 }
 
 .todo-list li input {
