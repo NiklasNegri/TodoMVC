@@ -6,6 +6,8 @@ const itemsLeft = document.querySelector(".items-left");
 const itemsShowAllButton = document.querySelector(".items-show-all");
 const itemsActiveButton = document.querySelector(".items-active");
 const itemsCompletedButton = document.querySelector(".items-completed");
+const toggleAll = document.querySelector(".toggle-all");
+
 let amountChecked = 0;
 let uncompletedItems = 0;
 let completedItems = 0;
@@ -21,14 +23,38 @@ newTodoForm.onsubmit = event => {
 }
 
 clearAllButton.onclick = event => {
-    let removeCheckbox = document.querySelectorAll('input[type="checkbox"]');
     clearAllButton.hidden = true;
-    removeCheckbox.forEach(c => {
+    let removeCheckbox = document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]');
+    for (let c of removeCheckbox) {
         if (c.checked) {
             c.parentNode.parentNode.removeChild(c.parentNode);
+            uncompletedItems--;
+            completedItems--;
             amountChecked--;
         }
-    });
+    }
+    displayItemsLeft();
+    displayToggleAll();
+}
+
+toggleAll.onclick = event => {
+    let removeCheckbox = document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]');
+    if (toggleAll.checked) {
+        for (let c of removeCheckbox) {
+            c.checked = true;
+            completedItems++
+            amountChecked++
+        }
+    }
+    else {
+        for (let c of removeCheckbox) {
+            c.checked = true;
+            completedItems--;
+            amountChecked--;
+        }
+    }
+    displayItemsLeft();
+    displayClearAllButton();
 }
 
 function displayItemsLeft() {
@@ -43,13 +69,22 @@ function displayItemsLeft() {
     }
 }
 
+function displayToggleAll() {
+    if (completedItems === 0 && uncompletedItems === 0 ) {
+        toggleAll.hidden = true;
+    }
+    else {
+        toggleAll.hidden = false;
+    }
+}
+
 function displayClearAllButton() {
     if (amountChecked > 0) {
         clearAllButton.hidden = false;
     }
     else if (amountChecked === 0) {
         clearAllButton.hidden = true;
-    }    
+    }
 }
 
 function addTodo(todoText) {
@@ -77,11 +112,13 @@ function addTodo(todoText) {
 
     uncompletedItems++;
     displayItemsLeft();
+    displayToggleAll();
 
     liRemoveButton.onclick = event => {
         liElement.remove();
         uncompletedItems--;
         displayItemsLeft();
+        displayToggleAll();
     }
 
     liCheckbox.onchange = event => {
