@@ -2,7 +2,12 @@ const todoList = document.querySelector(".todo-list");
 const newTodoInput = document.querySelector(".new-todo-input");
 const newTodoForm = document.querySelector(".new-todo-form");
 const clearAllButton = document.querySelector(".clear-all-button");
-let amountChecked = 0;
+const itemsLeft = document.querySelector(".items-left");
+const itemsShowAll = document.querySelector(".items-show-all");
+const itemsActive = document.querySelector(".items-active");
+const itemsCompleted = document.querySelector(".items-completed");
+
+let countItemsLeft = 0;
 
 newTodoForm.onsubmit = event => {
     event.preventDefault();
@@ -22,6 +27,18 @@ clearAllButton.onclick = event => {
             c.parentNode.parentNode.removeChild(c.parentNode);
         }
     });
+}
+
+function displayFilters() {
+    if (countItemsLeft === 0) {
+        itemsLeft.textContent = '';
+    }
+    else if (countItemsLeft === 1) {
+        itemsLeft.textContent = countItemsLeft + ' item left';
+    }
+    else {
+        itemsLeft.textContent = countItemsLeft + ' items left';
+    }
 }
 
 function addTodo(todoText) {
@@ -47,8 +64,13 @@ function addTodo(todoText) {
 
     todoList.append(liElement);
 
+    countItemsLeft++;
+    displayFilters();
+
     liRemoveButton.onclick = event => {
         liElement.remove();
+        countItemsLeft--;
+        displayFilters();
     }
 
     liCheckbox.onchange = event => {
