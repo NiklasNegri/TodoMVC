@@ -7,7 +7,8 @@ const itemsShowAllButton = document.querySelector(".items-show-all");
 const itemsActiveButton = document.querySelector(".items-active");
 const itemsCompletedButton = document.querySelector(".items-completed");
 let amountChecked = 0;
-let countItemsLeft = 0;
+let uncompletedItems = 0;
+let completedItems = 0;
 
 newTodoForm.onsubmit = event => {
     event.preventDefault();
@@ -25,21 +26,30 @@ clearAllButton.onclick = event => {
     removeCheckbox.forEach(c => {
         if (c.checked) {
             c.parentNode.parentNode.removeChild(c.parentNode);
+            amountChecked--;
         }
     });
-    countItemsLeft = 0;
 }
 
 function displayItemsLeft() {
-    if (countItemsLeft === 0) {
+    if (uncompletedItems === 0) {
         itemsLeft.textContent = '';
     }
-    else if (countItemsLeft === 1) {
-        itemsLeft.textContent = countItemsLeft + ' item left';
+    else if (uncompletedItems === 1) {
+        itemsLeft.textContent = uncompletedItems + ' item left';
     }
     else {
-        itemsLeft.textContent = countItemsLeft + ' items left';
+        itemsLeft.textContent = uncompletedItems + ' items left';
     }
+}
+
+function displayClearAllButton() {
+    if (amountChecked > 0) {
+        clearAllButton.hidden = false;
+    }
+    else if (amountChecked === 0) {
+        clearAllButton.hidden = true;
+    }    
 }
 
 function addTodo(todoText) {
@@ -65,31 +75,27 @@ function addTodo(todoText) {
 
     todoList.append(liElement);
 
-    countItemsLeft++;
+    uncompletedItems++;
     displayItemsLeft();
 
     liRemoveButton.onclick = event => {
         liElement.remove();
-        countItemsLeft--;
+        uncompletedItems--;
         displayItemsLeft();
     }
 
     liCheckbox.onchange = event => {
         if (liCheckbox.checked) {
             amountChecked++;
-            countItemsLeft--;
+            uncompletedItems--;
             displayItemsLeft();
+            displayClearAllButton();
         }
-        else if (!liCheckbox.checked) {
+        else {
             amountChecked--;
-            countItemsLeft++;
+            uncompletedItems++;
             displayItemsLeft();
+            displayClearAllButton();
         }
-        if (amountChecked > 0) {
-            clearAllButton.hidden = false;
-        }
-        else if (amountChecked === 0) {
-            clearAllButton.hidden = true;
-        }    
     }
 }
