@@ -57,6 +57,25 @@ toggleAll.onclick = event => {
     displayClearAllButton();
 }
 
+itemsActiveButton.onclick = event => {
+    let removeCheckbox = document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]');
+    for (let c of removeCheckbox) {
+        if (!c.checked) {
+            c.parentNode.style.display = 'none';
+        }
+        else {
+            c.parentNode.style.display = 'flex';
+        }
+    }
+}
+
+itemsShowAllButton.onclick = event => {
+    let removeCheckbox = document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]');
+    for (let c of removeCheckbox) {
+        c.parentNode.style.display = 'flex';
+    }
+}
+
 function displayItemsLeft() {
     if (uncompletedItems === 0) {
         itemsLeft.textContent = '';
