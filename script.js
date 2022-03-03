@@ -6,7 +6,7 @@ const itemsLeft = document.querySelector(".items-left");
 const itemsShowAll = document.querySelector(".items-show-all");
 const itemsActive = document.querySelector(".items-active");
 const itemsCompleted = document.querySelector(".items-completed");
-
+let amountChecked = 0;
 let countItemsLeft = 0;
 
 newTodoForm.onsubmit = event => {
@@ -27,9 +27,10 @@ clearAllButton.onclick = event => {
             c.parentNode.parentNode.removeChild(c.parentNode);
         }
     });
+    countItemsLeft = 0;
 }
 
-function displayFilters() {
+function displayItemsLeft() {
     if (countItemsLeft === 0) {
         itemsLeft.textContent = '';
     }
@@ -65,20 +66,24 @@ function addTodo(todoText) {
     todoList.append(liElement);
 
     countItemsLeft++;
-    displayFilters();
+    displayItemsLeft();
 
     liRemoveButton.onclick = event => {
         liElement.remove();
         countItemsLeft--;
-        displayFilters();
+        displayItemsLeft();
     }
 
     liCheckbox.onchange = event => {
         if (liCheckbox.checked) {
             amountChecked++;
+            countItemsLeft--;
+            displayItemsLeft();
         }
         else if (!liCheckbox.checked) {
             amountChecked--;
+            countItemsLeft++;
+            displayItemsLeft();
         }
         if (amountChecked > 0) {
             clearAllButton.hidden = false;
@@ -86,5 +91,6 @@ function addTodo(todoText) {
         else if (amountChecked === 0) {
             clearAllButton.hidden = true;
         }
+        
     }
 }
