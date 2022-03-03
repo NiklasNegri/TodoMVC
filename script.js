@@ -10,7 +10,6 @@ const toggleAll = document.querySelector(".toggle-all");
 
 let amountChecked = 0;
 let uncompletedItems = 0;
-let completedItems = 0;
 
 newTodoForm.onsubmit = event => {
     event.preventDefault();
@@ -29,7 +28,6 @@ clearAllButton.onclick = event => {
         if (c.checked) {
             c.parentNode.parentNode.removeChild(c.parentNode);
             uncompletedItems--;
-            completedItems--;
             amountChecked--;
         }
     }
@@ -37,19 +35,19 @@ clearAllButton.onclick = event => {
     displayToggleAll();
 }
 
-toggleAll.onclick = event => {
+toggleAll.onchange = event => {
     let removeCheckbox = document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]');
     if (toggleAll.checked) {
         for (let c of removeCheckbox) {
             c.checked = true;
-            completedItems++
+            uncompletedItems--;
             amountChecked++
         }
     }
     else {
         for (let c of removeCheckbox) {
-            c.checked = true;
-            completedItems--;
+            c.checked = false;
+            uncompletedItems++;
             amountChecked--;
         }
     }
@@ -69,6 +67,18 @@ itemsActiveButton.onclick = event => {
     }
 }
 
+itemsCompletedButton.onclick = event => {
+    let removeCheckbox = document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]');
+    for (let c of removeCheckbox) {
+        if (!c.checked) {
+            c.parentNode.style.display = 'flex';
+        }
+        else {
+            c.parentNode.style.display = 'none';
+        }
+    }
+}
+
 itemsShowAllButton.onclick = event => {
     let removeCheckbox = document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]');
     for (let c of removeCheckbox) {
@@ -78,7 +88,7 @@ itemsShowAllButton.onclick = event => {
 
 function displayItemsLeft() {
     if (uncompletedItems === 0) {
-        itemsLeft.textContent = '';
+        itemsLeft.textContent = '0 items left';
     }
     else if (uncompletedItems === 1) {
         itemsLeft.textContent = uncompletedItems + ' item left';
