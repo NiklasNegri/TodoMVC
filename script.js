@@ -3,9 +3,9 @@ const newTodoInput = document.querySelector(".new-todo-input");
 const newTodoForm = document.querySelector(".new-todo-form");
 const clearAllButton = document.querySelector(".clear-all-button");
 const itemsLeft = document.querySelector(".items-left");
-const itemsShowAll = document.querySelector(".items-show-all");
-const itemsActive = document.querySelector(".items-active");
-const itemsCompleted = document.querySelector(".items-completed");
+const itemsShowAllButton = document.querySelector(".items-show-all");
+const itemsActiveButton = document.querySelector(".items-active");
+const itemsCompletedButton = document.querySelector(".items-completed");
 let amountChecked = 0;
 let countItemsLeft = 0;
 
@@ -90,7 +90,6 @@ function addTodo(todoText) {
         }
         else if (amountChecked === 0) {
             clearAllButton.hidden = true;
-        }
-        
+        }    
     }
 }
