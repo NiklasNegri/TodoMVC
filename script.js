@@ -5,20 +5,24 @@ let arrowDownButton = document.querySelector('.arrow-button');
 let itemsLeftText = document.querySelector('.items-left');
 let itemsLeftNumber = 0;
 let liCheckboxList = [];
+let allChecked = true;
 
 
 
 
 form.onsubmit = event => {
     event.preventDefault();
-    itemsLeftNumber++;
-    itemsLeftText.hidden = false;
     
-    addTodo(todoInput.value)
+    
+    if (todoInput.value != '') {
+        addTodo(todoInput.value)
+    }
+    
 }
 
 function addTodo(todoText) {
-
+    itemsLeftNumber++;
+    itemsLeftText.hidden = false;
     
     ItemsLeftOutput(itemsLeftNumber);
 
@@ -66,13 +70,28 @@ function addTodo(todoText) {
     }
 
     arrowDownButton.onclick = event => {
+        allChecked = true;
         liCheckboxList.forEach(liCheckbox => {
-            liCheckbox.checked = true;
-            if (itemsLeftNumber > 0) {
-                itemsLeftNumber--;
+            if (liCheckbox.checked == false) {
+                allChecked = false;
             }
-
         });
+
+        if (allChecked == true) {
+            liCheckboxList.forEach(liCheckbox => {
+                liCheckbox.checked = false;
+                itemsLeftNumber++;
+    
+            });
+        }
+        else if (allChecked == false) {
+            liCheckboxList.forEach(liCheckbox => {
+                liCheckbox.checked = true;
+                itemsLeftNumber = 0;
+    
+            });
+        }
+        
         ItemsLeftOutput(itemsLeftNumber);
     }
     
