@@ -41,11 +41,14 @@ header {
     margin-right: auto;
 }
 
+main {
+    width: 540px;
+}
+
 .todo-list {
     list-style-type: none;
     display: block;
     font-size: 25px;
-    
 }
 
 .todo-list li {
@@ -74,6 +77,27 @@ li button {
     width: 35px;
     height: 35px;
     margin-top: 20px;
+}
+
+.items-left {
+    width: 540px;
+    height: 35px;
+    background-color: blanchedalmond;
+
+    
+    margin-left: auto;
+    margin-right: auto;
+
+    position: relative;
+    left: 20px;
+    top: -52px;
+    border: 2px solid black;
+    font-size: 25px;
+}
+
+.todo-list p {
+    width: fit-content;
+    block-size: fit-content;
 }
 
 

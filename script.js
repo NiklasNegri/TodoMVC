@@ -2,18 +2,29 @@ let form = document.querySelector('.new-todo');
 let todoList = document.querySelector('.todo-list');
 let todoInput = document.querySelector('.add-todo-input');
 let arrowDownButton = document.querySelector('.arrow-button');
+let itemsLeftText = document.querySelector('.items-left');
+let itemsLeftNumber = 0;
+let liCheckboxList = [];
+
 
 
 
 form.onsubmit = event => {
     event.preventDefault();
-
+    itemsLeftNumber++;
+    itemsLeftText.hidden = false;
+    
     addTodo(todoInput.value)
 }
 
 function addTodo(todoText) {
+
+    
+    ItemsLeftOutput(itemsLeftNumber);
+
     let liCheckbox = document.createElement('input');
     liCheckbox.type = 'checkbox';
+    liCheckboxList[liCheckboxList.length] = liCheckbox;
 
     let liText = document.createElement('p');
     liText.textContent = todoText;
@@ -31,15 +42,45 @@ function addTodo(todoText) {
 
     liRemoveButton.onclick = event => {
         liElement.remove();
+        if (liCheckbox.checked == false) {
+            if (itemsLeftNumber > 0) {
+                itemsLeftNumber--;
+            }
+            ItemsLeftOutput(itemsLeftNumber);
+        }
     }
     todoInput.value = '';
 
     liCheckbox.onchange = event => {
         if (liCheckbox.checked) {
+            if (itemsLeftNumber > 0) {
+                itemsLeftNumber--;
+            }
             
+            ItemsLeftOutput(itemsLeftNumber);
+        }
+        else {
+            itemsLeftNumber++;
+            ItemsLeftOutput(itemsLeftNumber);
         }
     }
 
+    arrowDownButton.onclick = event => {
+        liCheckboxList.forEach(liCheckbox => {
+            liCheckbox.checked = true;
+            if (itemsLeftNumber > 0) {
+                itemsLeftNumber--;
+            }
+
+        });
+        ItemsLeftOutput(itemsLeftNumber);
+    }
     
 }
+
+function ItemsLeftOutput (itemsLeftNumber){
+    
+    itemsLeftText.textContent = itemsLeftNumber + " items left";
+}
+
 
