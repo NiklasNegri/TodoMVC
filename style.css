@@ -25,6 +25,10 @@ li {
     align-items: baseline;
 }
 
+#toggle-all {
+    display: none;
+}
+
 .completed p {
     text-decoration: line-through;
     color: grey;
