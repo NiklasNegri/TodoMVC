@@ -25,6 +25,11 @@ li {
     align-items: baseline;
 }
 
+.completed p {
+    text-decoration: line-through;
+    color: grey;
+}
+
 .footer ul {
     display: flex;
     justify-content: center;
