@@ -10,16 +10,31 @@
 <body>
     <header>
         <h1>todos</h1>
+        
         <form class="new-todo">
-            <button type="button" class="arrow-button" >🔽</button>
-            <input type="text" class="add-todo-input" placeholder="What needs to be done?">
+            <section class="border">
+                <button type="button" class="arrow-button" >🔽</button>
+                <input type="text" class="add-todo-input" placeholder="What needs to be done?">
+            </section>
+            
         </form>
+        
+        
     </header>
     <form class="main">
-        <ul class="todo-list">
 
+        <ul class="todo-list"></ul>
+
+        <ul class="bottom-bar-list" hidden>
+            <div class="bottom-bar" >
+                <li class="items-left" ><p></p></li>
+                <li class="all-button" ><button type="button">All</button></li>
+                <li class="active-button" ><button type="button">Active</button></li>
+                <li class="completed-button" ><button type="button">Completed</button></li>
+            </div>
+            
         </ul>
-        <p class="items-left" hidden></p>
+        
     </form>
     <footer>
 
