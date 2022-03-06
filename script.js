@@ -9,6 +9,7 @@ const completedButton = document.querySelector(".completed-button");
 const toggleAll = document.querySelector("#arrow-button");
 const toggleLabel = document.querySelector(".toggle-label");
 const bottomBarList = document.querySelector(".bottom-bar-list");
+const replacementBar = document.querySelector(".replacement-bar")
 
 let completedItems = 0;
 let uncompletedItems = 0;
@@ -33,6 +34,9 @@ clearAllButton.onclick = event => {
         }
     }
     displayItemsLeft();
+    if (completedItems == 0 && uncompletedItems == 0) {
+        replacementBar.hidden = false;
+    }
 }
 
 toggleAll.onclick = event => {
@@ -96,6 +100,9 @@ function addTodo(todoText) {
         liElement.remove();
         displayItemsLeft();
         displayClearAllButton();
+        if (completedItems == 0 && uncompletedItems == 0) {
+        replacementBar.hidden = false;
+    }
     }
     liCheckbox.onchange = event => {
         if (liCheckbox.checked) {
@@ -111,6 +118,11 @@ function addTodo(todoText) {
         displayItemsLeft();
         displayClearAllButton();
     }
+    
+    
+    replacementBar.hidden = true;
+    
+    
 }
 function displayClearAllButton() {
     if (completedItems > 0) {
