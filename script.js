@@ -10,7 +10,6 @@ const toggleAll = document.querySelector("#arrow-button");
 const toggleLabel = document.querySelector(".toggle-label");
 const bottomBarList = document.querySelector(".bottom-bar-list");
 const replacementBar = document.querySelector(".replacement-bar")
-
 let completedItems = 0;
 let uncompletedItems = 0;
 let filter = setFilter("all");
@@ -24,7 +23,6 @@ newTodoForm.onsubmit = event => {
         setFilter(filter);
     }
 }
-
 function addTodo(todoText) {
     let liCheckbox = document.createElement('input');
     liCheckbox.type = 'checkbox';
@@ -71,7 +69,6 @@ function addTodo(todoText) {
     }
     replacementBar.hidden = true;
 }
-
 toggleAll.onclick = event => {
     if (isAllToggled()) {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
@@ -96,7 +93,6 @@ toggleAll.onclick = event => {
     displayItemsLeft();
     displayClearAllButton();
 }
-
 function isAllToggled() {
     let amountToggled = 0;
     let idAmount = 0;
@@ -113,7 +109,6 @@ function isAllToggled() {
         return false;
     }
 }
-
 activeButton.onclick = event => {
     filter = setFilter("active");
 }
@@ -123,7 +118,6 @@ completedButton.onclick = event => {
 showAllButton.onclick = event => {
     filter = setFilter("all");
 }
-
 function setFilter(newFilter) {
     if (newFilter === "all") {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
@@ -152,7 +146,6 @@ function setFilter(newFilter) {
     }
     return newFilter;
 }
-
 clearAllButton.onclick = event => {
     clearAllButton.hidden = true;
     for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
@@ -166,7 +159,6 @@ clearAllButton.onclick = event => {
         replacementBar.hidden = false;
     }
 }
-
 function displayClearAllButton() {
     if (completedItems > 0) {
         clearAllButton.hidden = false;
