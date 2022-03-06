@@ -1,0 +1,21 @@
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\testhost.exe
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\testhost.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Microsoft.TestPlatform.PlatformAbstractions.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Microsoft.TestPlatform.AdapterUtilities.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Selenium Unit Test.deps.json
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Selenium Unit Test.runtimeconfig.json
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Selenium Unit Test.runtimeconfig.dev.json
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Selenium Unit Test.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\Selenium Unit Test.pdb
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.AssemblyInfo.cs
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.dll
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.pdb
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\obj\Debug\netcoreapp2.1\Selenium Unit Test.genruntimeconfig.cache
+C:\Users\user\source\repos\todoMVC\Selenium Unit Test\bin\Debug\netcoreapp2.1\MicrosoftWebDriver.exe

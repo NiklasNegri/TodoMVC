@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "79568255-6671-4547-9520-0bba15379fa7": {
+      "ProjectGuid": "79568255-6671-4547-9520-0bba15379fa7",
+      "DisplayName": "Selenium Unit Test",
+      "ColorIndex": 0
+    },
+    "17ffc5c3-55ff-4ec4-885f-d1d22269c262": {
+      "ProjectGuid": "17ffc5c3-55ff-4ec4-885f-d1d22269c262",
+      "DisplayName": "WebDriverTest",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}
