@@ -1,49 +1,77 @@
-let form = document.querySelector('.new-todo');
-let todo = document.querySelector('.todo-list');
-let todoInput = document.querySelector('.add-todo-input');
-let arrowDownButton = document.querySelector('.arrow-button');
-let itemsLeftText = document.querySelector('.items-left');
-let bottomBarList = document.querySelector('.bottom-bar-list');
-let allButton = document.querySelector('.all-button');
-let activeButton = document.querySelector('.active-button');
-let completedButton = document.querySelector('.completed-button');
-let elementList = [];
-let todoAmount = 0;
-let itemsLeftNumber = 0;
-let liCheckboxList = [];
-let allChecked = true;
+const todoList = document.querySelector(".todo-list");
+const newTodoInput = document.querySelector(".new-todo-input");
+const newTodoForm = document.querySelector(".new-todo-form");
+const clearAllButton = document.querySelector(".clear-all-button");
+const itemsLeft = document.querySelector(".items-left");
+const itemsShowAllButton = document.querySelector(".items-show-all");
+const itemsActiveButton = document.querySelector(".items-active");
+const itemsCompletedButton = document.querySelector(".items-completed");
+const toggleAll = document.querySelector("#toggle-all");
+const toggleLabel = document.querySelector(".toggle-label");
+const filters = document.querySelector(".filters");
 
+let completedItems = 0;
+let uncompletedItems = 0;
+filters.style.display = 'none';
 
-
-
-form.onsubmit = event => {
+newTodoForm.onsubmit = event => {
     event.preventDefault();
-    
-    
-    if (todoInput.value != '') {
-        addTodo(todoInput.value)
+    if (newTodoInput.value) {
+        addTodo(newTodoInput.value);
+        setFilter("all");
+        toggleAll.checked = false;
+        newTodoInput.value = '';
     }
-    
 }
 
+clearAllButton.onclick = event => {
+    clearAllButton.hidden = true;
+    for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+        if (c.checked) {
+            c.parentNode.parentNode.removeChild(c.parentNode);
+            completedItems--;
+        }
+    }
+    displayItemsLeft();
+}
+
+toggleAll.onclick = event => {
+    if (toggleAll.checked) {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            if (!c.checked) {
+                c.checked = true;
+                uncompletedItems--;
+                completedItems++
+                c.parentElement.setAttribute("class", "completed");
+            }
+        }
+    }
+    else {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            c.checked = false;
+            uncompletedItems++;
+            completedItems--;
+            c.parentElement.removeAttribute("class");
+        }
+    }
+    displayItemsLeft();
+    displayClearAllButton();
+}
+
+itemsActiveButton.onclick = event => {
+    setFilter("active");
+}
+itemsCompletedButton.onclick = event => {
+    setFilter("completed");
+}
+itemsShowAllButton.onclick = event => {
+    setFilter("all");
+}
 function addTodo(todoText) {
-    
-    itemsLeftNumber++;
-    todoAmount++;
-
-    bottomBarList.hidden = false;
-    
-    
-
-    ItemsLeftOutput(itemsLeftNumber);
-
     let liCheckbox = document.createElement('input');
     liCheckbox.type = 'checkbox';
-    liCheckboxList[liCheckboxList.length] = liCheckbox;
-
     let liText = document.createElement('p');
     liText.textContent = todoText;
-
     let liRemoveButton = document.createElement('button');
     liRemoveButton.type = 'button';
     liRemoveButton.textContent = '❌';
@@ -52,94 +80,86 @@ function addTodo(todoText) {
     liElement.append(liCheckbox);
     liElement.append(liText);
     liElement.append(liRemoveButton);
-    elementList[elementList.length] = liElement;
+    todoList.append(liElement);
 
-    
-
-    todo.append(liElement);
-    
+    uncompletedItems++;
+    displayItemsLeft();
+    filters.style.display = 'flex';
 
     liRemoveButton.onclick = event => {
-        liElement.remove();
-        todoAmount--;
-        liCheckboxList.pop();
-        if (liCheckbox.checked == false) {
-            if (itemsLeftNumber > 0) {
-                itemsLeftNumber--;
-            }
-            
-            ItemsLeftOutput(itemsLeftNumber);
-        }
-        if (todoAmount == 0) {
-            bottomBarList.hidden = true;
-        }
-        
-    }
-    todoInput.value = '';
-
-    liCheckbox.onchange = event => {
-        if (liCheckbox.checked) {
-            if (itemsLeftNumber > 0) {
-                itemsLeftNumber--;
-            }
-            
-            ItemsLeftOutput(itemsLeftNumber);
+        if (!liCheckbox.checked) {
+            uncompletedItems--;
         }
         else {
-            itemsLeftNumber++;
-            ItemsLeftOutput(itemsLeftNumber);
+            completedItems--;
         }
+        liElement.remove();
+        displayItemsLeft();
+        displayClearAllButton();
     }
-
-    arrowDownButton.onclick = event => {
-        allChecked = true;
-        liCheckboxList.forEach(liCheckbox => {
-            if (liCheckbox.checked == false) {
-                allChecked = false;
-            }
-        });
-
-        if (allChecked == true) {
-            liCheckboxList.forEach(liCheckbox => {
-                liCheckbox.checked = false;
-                itemsLeftNumber++;
-    
-            });
+    liCheckbox.onchange = event => {
+        if (liCheckbox.checked) {
+            completedItems++;
+            uncompletedItems--;
+            liElement.setAttribute("class", "completed");
         }
-        else if (allChecked == false) {
-            liCheckboxList.forEach(liCheckbox => {
-                
-                itemsLeftNumber = 0;
-                liCheckbox.checked = true;
-            });
+        else {
+            completedItems--;
+            uncompletedItems++;
+            liElement.removeAttribute("class");
         }
-        
-        ItemsLeftOutput(itemsLeftNumber);
-    }
-    
-    allButton.onclick = event => {
-        elementList.forEach(liElement => {
-            liElement.hidden = false;
-        });
-        
-    }
-
-    activeButton.onclick = event => {
-        elementList.forEach(element => {
-            if (element.liCheckbox.checked == true) {
-                element.hidden = true;
-            }
-        });
-    }
-
-    completedButton.onclick = event => {
-        
+        displayItemsLeft();
+        displayClearAllButton();
     }
 }
-
-function ItemsLeftOutput (itemsLeftNumber){
-    
-    itemsLeftText.textContent = itemsLeftNumber + " items left";
+function displayClearAllButton() {
+    if (completedItems > 0) {
+        clearAllButton.hidden = false;
+    }
+    else if (completedItems === 0) {
+        clearAllButton.hidden = true;
+    }
 }
-
-
+function displayItemsLeft() {
+    if (uncompletedItems === 0 && completedItems === 0) {
+        toggleAll.checked = false;
+        toggleLabel.hidden = true;
+        filters.style.display = 'none';
+        itemsLeft.textContent = '0 items left';
+    }
+    else if (uncompletedItems === 1) {
+        toggleLabel.hidden = false;
+        itemsLeft.textContent = uncompletedItems + ' item left';
+    }
+    else {
+        toggleLabel.hidden = false;
+        itemsLeft.textContent = uncompletedItems + ' items left';
+    }
+}
+function setFilter(newFilter) {
+    if (newFilter === "all") {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            c.parentNode.style.display = 'flex';
+        }
+    }
+    else if (newFilter === "active") {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            if (!c.checked) {
+                c.parentNode.style.display = 'flex';
+            }
+            else {
+                c.parentNode.style.display = 'none';
+            }
+        }
+    }
+    else if (newFilter === "completed") {
+        for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
+            if (!c.checked) {
+                c.parentNode.style.display = 'none';
+            }
+            else {
+                c.parentNode.style.display = 'flex';
+            }
+        }
+    }
+}
