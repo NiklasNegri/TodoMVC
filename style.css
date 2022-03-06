@@ -22,7 +22,6 @@ header h1{
 
 
 
-
 .todo-list {
     list-style-type: none;
     display: block;
@@ -34,6 +33,9 @@ header h1{
 
 
 @media screen and (min-width: 600px) {
+    .new-todo {
+        margin: -25px;
+    }
     .new-todo .border{
         display: grid;
         width: 540px;
@@ -41,9 +43,7 @@ header h1{
         
         margin-left: auto;
         margin-right: auto;
-    
-        position: relative;
-        
+      
         
     
     }
@@ -71,7 +71,7 @@ header h1{
         outline-width: 0px;
         background-color: blanchedalmond;
         width: 485px;
-        height: 54px;
+        
         font-size: 30px;
         font-style: italic;
         font-weight: 300;
@@ -88,15 +88,17 @@ header h1{
         display: grid;
         grid-template-columns: 1fr 8fr 1fr;
         width: 540px;
+        
         background-color: blanchedalmond;
         
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: -27px;
         
         
     
         position: relative;
-        top: -25px;
+        
         left: -20px;
         box-shadow: 4px 0 4px 0 grey, -4px 0 4px 0 grey;
     }
@@ -104,8 +106,7 @@ header h1{
         width: 540px;
         margin-left: auto;
         margin-right: auto;
-        position: relative;
-        left: 3px;
+        
     }
     .bottom-bar-list {
         width: 500px;
@@ -113,12 +114,12 @@ header h1{
         background-color: blanchedalmond;
         font-family: inherit;
         
+        
         margin-left: auto;
         margin-right: auto;
     
         position: relative;
-        left: -3px;
-        top: -52px;
+        
         
         font-size: 20px;
     
@@ -144,6 +145,9 @@ header h1{
     }
 }
 @media screen and (max-width: 600px) {
+    .new-todo {
+        margin: -25px;
+    }
     .new-todo .border{
         display: grid;
         width: 400px;
@@ -202,11 +206,10 @@ header h1{
         
         margin-left: auto;
         margin-right: auto;
-        
+        margin-bottom: -27px;
         
     
         position: relative;
-        top: -25px;
         left: -20px;
         box-shadow: 4px 0 4px 0 grey, -4px 0 4px 0 grey;
     }
@@ -222,13 +225,12 @@ header h1{
         height: 75px;
         background-color: blanchedalmond;
         font-family: inherit;
-        
+        margin-top: auto;
         margin-left: auto;
         margin-right: auto;
     
         position: relative;
         left: -3px;
-        top: -52px;
         
         font-size: 20px;
     
@@ -244,6 +246,9 @@ header h1{
     }
     .items-left {
         grid-area: a;
+        margin-top: auto;
+        margin-bottom: auto;
+        text-align: center;
         position: relative;
         left: -10px;
     }
