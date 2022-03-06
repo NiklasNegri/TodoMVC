@@ -122,19 +122,16 @@ function displayClearAllButton() {
 }
 function displayItemsLeft() {
     if (uncompletedItems === 0 && completedItems === 0) {
-        toggleAll.hidden = true;
         toggleAll.checked = false;
         toggleLabel.hidden = true;
         filters.style.display = 'none';
         itemsLeft.textContent = '0 items left';
     }
     else if (uncompletedItems === 1) {
-        toggleAll.hidden = false;
         toggleLabel.hidden = false;
         itemsLeft.textContent = uncompletedItems + ' item left';
     }
     else {
-        toggleAll.hidden = false;
         toggleLabel.hidden = false;
         itemsLeft.textContent = uncompletedItems + ' items left';
     }

@@ -10,28 +10,30 @@
 </head>
 
 <body>
-    <header class="header">
-        <h1>TodoMVC á la Niklas</h1>
-        <form class="new-todo-form">
-            <input type="checkbox" id="toggle-all" hidden>
-            <label for="toggle-all" class="toggle-label" hidden>🔽</label>
-            <input class="new-todo-input" placeholder="What needs to be done?">
+    <section class="todoapp">
+        <header class="header">
+            <h1>TodoMVC</h1>
+            <form class="new-todo-form">
+                <input type="checkbox" id="toggle-all" hidden>
+                <label for="toggle-all" class="toggle-label" hidden>🔽</label>
+                <input class="new-todo-input" placeholder="What needs to be done?">
+            </form>
+        </header>
+        <form class="main">
+            <ul class="todo-list">
+                <!-- filled with li elements using js -->
+            </ul>
         </form>
-    </header>
-    <form class="main">
-        <ul class="todo-list">
-            <!-- filled with li elements using js -->
-        </ul>
-    </form>
-    <footer class="footer">
-        <ul class="filters">
-            <p class="items-left"></p>
-            <button type="button" class="items-show-all">All</button>
-            <button type="button" class="items-active">Active</button>
-            <button type="button" class="items-completed">Completed</button>
-            <button type="button" class="clear-all-button" hidden>Clear completed</button>
-        </ul>
-    </footer>
+        <footer class="footer">
+            <ul class="filters">
+                <p class="items-left"></p>
+                <button type="button" class="items-show-all">All</button>
+                <button type="button" class="items-active">Active</button>
+                <button type="button" class="items-completed">Completed</button>
+                <button type="button" class="clear-all-button" hidden>Clear completed</button>
+            </ul>
+        </footer>
+    </section>
 </body>
 
 </html>
