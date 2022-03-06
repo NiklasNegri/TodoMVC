@@ -102,7 +102,7 @@ function addTodo(todoText) {
         displayClearAllButton();
         if (completedItems == 0 && uncompletedItems == 0) {
         replacementBar.hidden = false;
-    }
+        }
     }
     liCheckbox.onchange = event => {
         if (liCheckbox.checked) {
@@ -152,13 +152,13 @@ function displayItemsLeft() {
 function setFilter(newFilter) {
     if (newFilter === "all") {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
-            c.parentNode.style.display = 'flex';
+            c.parentNode.style.display = 'grid';
         }
     }
     else if (newFilter === "active") {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
             if (!c.checked) {
-                c.parentNode.style.display = 'flex';
+                c.parentNode.style.display = 'grid';
             }
             else {
                 c.parentNode.style.display = 'none';
@@ -171,7 +171,7 @@ function setFilter(newFilter) {
                 c.parentNode.style.display = 'none';
             }
             else {
-                c.parentNode.style.display = 'flex';
+                c.parentNode.style.display = 'grid';
             }
         }
     }
