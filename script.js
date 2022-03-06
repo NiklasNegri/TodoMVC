@@ -1,26 +1,26 @@
 const todoList = document.querySelector(".todo-list");
-const newTodoInput = document.querySelector(".new-todo-input");
-const newTodoForm = document.querySelector(".new-todo-form");
+const addTodoInpur = document.querySelector(".add-todo-input");
+const newTodoForm = document.querySelector(".new-todo");
 const clearAllButton = document.querySelector(".clear-all-button");
 const itemsLeft = document.querySelector(".items-left");
-const itemsShowAllButton = document.querySelector(".items-show-all");
-const itemsActiveButton = document.querySelector(".items-active");
-const itemsCompletedButton = document.querySelector(".items-completed");
-const toggleAll = document.querySelector("#toggle-all");
+const showAllButton = document.querySelector(".all-button");
+const activeButton = document.querySelector(".active-button");
+const completedButton = document.querySelector(".completed-button");
+const toggleAll = document.querySelector("#arrow-button");
 const toggleLabel = document.querySelector(".toggle-label");
-const filters = document.querySelector(".filters");
+const bottomBarList = document.querySelector(".bottom-bar-list");
 
 let completedItems = 0;
 let uncompletedItems = 0;
-filters.style.display = 'none';
+bottomBarList.style.display = 'none';
 
 newTodoForm.onsubmit = event => {
     event.preventDefault();
-    if (newTodoInput.value) {
-        addTodo(newTodoInput.value);
+    if (addTodoInpur.value) {
+        addTodo(addTodoInpur.value);
         setFilter("all");
         toggleAll.checked = false;
-        newTodoInput.value = '';
+        addTodoInpur.value = '';
     }
 }
 
@@ -58,13 +58,13 @@ toggleAll.onclick = event => {
     displayClearAllButton();
 }
 
-itemsActiveButton.onclick = event => {
+activeButton.onclick = event => {
     setFilter("active");
 }
-itemsCompletedButton.onclick = event => {
+completedButton.onclick = event => {
     setFilter("completed");
 }
-itemsShowAllButton.onclick = event => {
+showAllButton.onclick = event => {
     setFilter("all");
 }
 function addTodo(todoText) {
@@ -84,7 +84,7 @@ function addTodo(todoText) {
 
     uncompletedItems++;
     displayItemsLeft();
-    filters.style.display = 'flex';
+    bottomBarList.style.display = 'flex';
 
     liRemoveButton.onclick = event => {
         if (!liCheckbox.checked) {
@@ -123,8 +123,9 @@ function displayClearAllButton() {
 function displayItemsLeft() {
     if (uncompletedItems === 0 && completedItems === 0) {
         toggleAll.checked = false;
+        toggleAll.hidden = true;
         toggleLabel.hidden = true;
-        filters.style.display = 'none';
+        bottomBarList.style.display = 'none';
         itemsLeft.textContent = '0 items left';
     }
     else if (uncompletedItems === 1) {
