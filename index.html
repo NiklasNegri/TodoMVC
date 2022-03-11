@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,37 @@
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <h1>todos</h1>
-        <form class="new-todo">
-            <section class="border">
-                <div class="replacement-bar"></div>
-                <input type="checkbox" id="arrow-button" hidden>
-                <label for="arrow-button" class="toggle-label" hidden>🔽</label>
-                <input type="text" class="add-todo-input" placeholder="What needs to be done?">
-            </section>
+
+    <h1>todos</h1>
+
+    <div class="all-content">
+        <header>
+            <form class="new-todo">
+                <section class="border">
+                    <div class="replacement-bar"></div>
+                    <input type="checkbox" id="arrow-button" hidden>
+                    <label for="arrow-button" class="toggle-label" hidden>🔽</label>
+                    <input type="text" class="add-todo-input" placeholder="What needs to be done?">
+                </section>
+            </form>
+        </header>
+        <form class="main">
+            <ul class="todo-list"></ul>
         </form>
-    </header>
-    <form class="main">
-        <ul class="todo-list"></ul>
-    </form>
-    <footer>
-        <ul class="bottom-bar-list" hidden>
-            <div class="bottom-bar" >
-                <li class="items-left"></li>
-                <li class="all-button" ><button type="button">All</button></li>
-                <li class="active-button" ><button type="button">Active</button></li>
-                <li class="completed-button" ><button type="button">Completed</button></li>
-                <button type="button" class="clear-all-button" hidden>Clear completed</button>
-            </div>
-        </ul>
-    </footer>
+        <footer>
+            <ul class="bottom-bar-list" hidden>
+                <div class="bottom-bar">
+                    <li class="items-left"></li>
+                    <li class="all-button"><button type="button">All</button></li>
+                    <li class="active-button"><button type="button">Active</button></li>
+                    <li class="completed-button"><button type="button">Completed</button></li>
+                    <button type="button" class="clear-all-button" hidden>Clear completed</button>
+                </div>
+            </ul>
+        </footer>
+    </div>
 </body>
+
 </html>

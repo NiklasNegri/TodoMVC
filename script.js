@@ -23,6 +23,7 @@ newTodoForm.onsubmit = event => {
         setFilter(filter);
     }
 }
+
 function addTodo(todoText) {
     let liCheckbox = document.createElement('input');
     liCheckbox.type = 'checkbox';
@@ -45,8 +46,7 @@ function addTodo(todoText) {
     liRemoveButton.onclick = event => {
         if (!liCheckbox.checked) {
             uncompletedItems--;
-        }
-        else {
+        } else {
             completedItems--;
         }
         liElement.remove();
@@ -58,8 +58,7 @@ function addTodo(todoText) {
             completedItems++;
             uncompletedItems--;
             liElement.setAttribute("class", "completed");
-        }
-        else {
+        } else {
             completedItems--;
             uncompletedItems++;
             liElement.removeAttribute("class");
@@ -77,8 +76,7 @@ toggleAll.onclick = event => {
             completedItems--;
             c.parentElement.removeAttribute("class");
         }
-    }
-    else {
+    } else {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
             if (!c.checked) {
                 c.checked = true;
@@ -93,6 +91,7 @@ toggleAll.onclick = event => {
     displayItemsLeft();
     displayClearAllButton();
 }
+
 function isAllToggled() {
     let amountToggled = 0;
     let idAmount = 0;
@@ -104,42 +103,47 @@ function isAllToggled() {
     }
     if (amountToggled === idAmount) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
 activeButton.onclick = event => {
+    activeButton.style.border = "1px solid rgba(175, 47, 47, 0.2)";
+    completedButton.style.border = "0"
+    showAllButton.style.border = "0"
     filter = setFilter("active");
 }
 completedButton.onclick = event => {
+    activeButton.style.border = "0";
+    completedButton.style.border = "1px solid rgba(175, 47, 47, 0.2)"
+    showAllButton.style.border = "0"
     filter = setFilter("completed");
 }
 showAllButton.onclick = event => {
+    activeButton.style.border = "0";
+    completedButton.style.border = "0"
+    showAllButton.style.border = "1px solid rgba(175, 47, 47, 0.2)"
     filter = setFilter("all");
 }
+
 function setFilter(newFilter) {
     if (newFilter === "all") {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
             c.parentNode.style.display = 'grid';
         }
-    }
-    else if (newFilter === "active") {
+    } else if (newFilter === "active") {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
             if (!c.checked) {
                 c.parentNode.style.display = 'grid';
-            }
-            else {
+            } else {
                 c.parentNode.style.display = 'none';
             }
         }
-    }
-    else if (newFilter === "completed") {
+    } else if (newFilter === "completed") {
         for (let c of document.querySelector(".todo-list").querySelectorAll('input[type="checkbox"]')) {
             if (!c.checked) {
                 c.parentNode.style.display = 'none';
-            }
-            else {
+            } else {
                 c.parentNode.style.display = 'grid';
             }
         }
@@ -159,26 +163,25 @@ clearAllButton.onclick = event => {
         replacementBar.hidden = false;
     }
 }
+
 function displayClearAllButton() {
     if (completedItems > 0) {
         clearAllButton.hidden = false;
-    }
-    else if (completedItems === 0) {
+    } else if (completedItems === 0) {
         clearAllButton.hidden = true;
     }
 }
+
 function displayItemsLeft() {
     if (uncompletedItems === 0 && completedItems === 0) {
         toggleAll.checked = false;
         toggleLabel.hidden = true;
         bottomBarList.style.display = 'none';
         itemsLeft.textContent = '0 items left';
-    }
-    else if (uncompletedItems === 1) {
+    } else if (uncompletedItems === 1) {
         toggleLabel.hidden = false;
         itemsLeft.textContent = uncompletedItems + ' item left';
-    }
-    else {
+    } else {
         toggleLabel.hidden = false;
         itemsLeft.textContent = uncompletedItems + ' items left';
     }
